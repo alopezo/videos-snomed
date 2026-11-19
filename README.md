@@ -82,6 +82,11 @@ You can also open `index.html` in Chrome and run `render(20)` in the console to 
 - **Music level:** `MUSIC_VOL` in `mix.py`.
 - **Voice:** any Kokoro voice, for example `af_heart`, `am_michael` or `bf_emma`.
 
+## License
+
+Code is licensed under the [Apache License 2.0](LICENSE).
+Music, narration audio and rendered videos are not part of the repository and are not covered by this license.
+
 ## Content source
 
 The text is based on the SNOMED CT Postcoordination Guide at [docs.snomed.org](https://docs.snomed.org).
