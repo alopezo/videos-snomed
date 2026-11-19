@@ -1,0 +1,8 @@
+{
+  "name": "videos-snomed",
+  "private": true,
+  "description": "Code-driven SNOMED CT explainer videos: HTML scenes rendered with Playwright, narrated with Kokoro TTS, mixed with ffmpeg.",
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}

@@ -1,0 +1,20 @@
+# Media (generated or third-party) — never committed
+*.mp4
+*.mp3
+*.wav
+*.m4a
+*.png
+*.jpg
+audio/
+music/
+build/
+
+# Environments
+node_modules/
+.venv/
+__pycache__/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

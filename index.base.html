@@ -1,0 +1,122 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1f3a;--bg2:#12345e;--ink:#fff;--mute:#a9bfdc;--acc:#ff9e1b;--teal:#3fd0c9;--pink:#ff6b9a;--grn:#8be37a}
+*{box-sizing:border-box;margin:0}
+html,body{width:540px;height:960px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--ink)}
+#bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,var(--bg2),var(--bg) 70%)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35}
+.el{position:absolute;left:36px;right:36px;opacity:0;will-change:transform,opacity}
+.kicker{font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.h1{font-size:58px;font-weight:800;line-height:1.02}
+.h2{font-size:38px;font-weight:800;line-height:1.1}
+.p{font-size:23px;line-height:1.4;color:var(--mute)}
+.p b{color:var(--ink)}
+.code{font-family:'JetBrains Mono',monospace;font-size:17.5px;line-height:1.6;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px}
+.id{color:var(--acc)} .t{color:var(--mute)} .op{color:var(--pink);font-weight:700} .at{color:var(--teal)} .v{color:var(--grn)}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 18px;font-size:21px;line-height:1.35}
+.card small{display:block;color:var(--mute);font-size:16px;margin-top:4px}
+.num{display:inline-block;width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--bg);font-weight:800;text-align:center;line-height:34px;margin-right:10px;font-size:18px}
+.tag{display:inline-block;padding:5px 12px;border-radius:999px;font-size:15px;font-weight:700;margin-right:6px}
+.big{font-size:92px;font-weight:800;line-height:1}
+.leg{display:flex;align-items:center;gap:16px;font-size:20px}
+.leg .s{flex:none;white-space:nowrap;font-family:'JetBrains Mono';font-size:34px;font-weight:700;color:var(--pink);width:74px;text-align:center;background:rgba(0,0,0,.3);border-radius:10px;padding:4px 0}
+#bar{position:absolute;left:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--teal),var(--acc))}
+#foot{position:absolute;left:36px;bottom:20px;font-size:13px;color:var(--mute);letter-spacing:.05em}
+</style></head><body>
+<div id="bg"><div class="blob" id="b1" style="width:360px;height:360px;background:#2a7fd4"></div><div class="blob" id="b2" style="width:300px;height:300px;background:#ff9e1b"></div></div>
+
+<!-- S1 title 0-6 -->
+<div class="el kicker" data-s="0.3" data-e="6" data-a="up" style="top:370px">SNOMED CT · Practical guide</div>
+<div class="el h1" data-s="0.6" data-e="6" data-a="up" style="top:405px">Post&shy;coordination</div>
+<div class="el p" data-s="1.4" data-e="6" data-a="up" style="top:550px">Saying <b>more</b> with SNOMED CT — without a new code for every detail.</div>
+
+<!-- S2 problem 6-13 -->
+<div class="el kicker" data-s="6.3" data-e="13" data-a="up" style="top:300px">The challenge</div>
+<div class="el h2" data-s="6.5" data-e="13" data-a="up" style="top:335px">Clinical detail is almost endless.</div>
+<div class="el card" data-s="7.6" data-e="13" data-a="left" style="top:490px">Fracture of tibia</div>
+<div class="el card" data-s="8.2" data-e="13" data-a="left" style="top:560px">…of the <b>left</b> tibia</div>
+<div class="el card" data-s="8.8" data-e="13" data-a="left" style="top:630px">…left tibia, <b>open</b>, <b>spiral</b>, <b>healing</b>…</div>
+<div class="el p" data-s="10" data-e="13" data-a="up" style="top:730px">A pre-made concept for <b>every combination</b> isn't realistic.</div>
+
+<!-- S3 pre vs post 13-22 -->
+<div class="el kicker" data-s="13.3" data-e="22" data-a="up" style="top:260px">Two ways to express meaning</div>
+<div class="el" data-s="13.6" data-e="22" data-a="left" style="top:305px"><span class="tag" style="background:var(--teal);color:var(--bg)">PRECOORDINATED</span><div class="p" style="margin-top:12px">“A precoordinated expression includes a <b>single concept</b>.”</div></div>
+<div class="el code" data-s="15" data-e="22" data-a="type" style="top:440px"><span class="id">31978002</span> <span class="t">|Fracture of tibia|</span></div>
+<div class="el" data-s="16.8" data-e="22" data-a="left" style="top:555px"><span class="tag" style="background:var(--acc);color:var(--bg)">POSTCOORDINATED</span><div class="p" style="margin-top:12px">Combines <b>multiple concepts</b> based on SNOMED CT rules — so detail can be recorded <b>without creating a new concept</b>.</div></div>
+<div class="el code" data-s="19" data-e="22" data-a="type" style="top:750px"><span class="id">31978002</span> <span class="op">:</span> <span class="at">…</span> <span class="op">=</span> <span class="v">…</span></div>
+
+<!-- S4 build expression 22-36 -->
+<div class="el kicker" data-s="22.3" data-e="36" data-a="up" style="top:220px">Building an expression</div>
+<div class="el h2" data-s="22.5" data-e="36" data-a="up" style="top:255px">“Fracture of the <span style="color:var(--acc)">left</span> tibia”</div>
+<div class="el code" data-s="24" data-e="36" data-a="type" data-dur="7" style="top:380px"><span class="id">31978002</span> <span class="t">|Fracture of tibia|</span> <span class="op">:</span><br>&nbsp;&nbsp;<span class="id">363698007</span> <span class="at">|Finding site|</span> <span class="op">=</span><br>&nbsp;&nbsp;<span class="op">(</span> <span class="id">12611008</span> <span class="v">|Bone structure of tibia|</span> <span class="op">:</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="id">272741003</span> <span class="at">|Laterality|</span> <span class="op">=</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="id">7771000</span> <span class="v">|Left|</span> <span class="op">)</span></div>
+<div class="el card" data-s="31.2" data-e="36" data-a="left" style="top:630px"><span class="num">1</span><b>Focus concept</b> — starting point</div>
+<div class="el card" data-s="32.2" data-e="36" data-a="left" style="top:710px"><span class="num">2</span><b>Refinement</b> — attribute <span class="op">=</span> value pairs</div>
+<div class="el card" data-s="33.2" data-e="36" data-a="left" style="top:790px"><span class="num">3</span><b>Nesting</b> — refine a value itself</div>
+
+<!-- S5 syntax legend 36-44 -->
+<div class="el kicker" data-s="36.3" data-e="44" data-a="up" style="top:270px">Compositional grammar</div>
+<div class="el h2" data-s="36.5" data-e="44" data-a="up" style="top:305px">Read the symbols</div>
+<div class="el leg" data-s="37.4" data-e="44" data-a="left" style="top:410px"><span class="s">:</span><span>separates focus concept from refinement</span></div>
+<div class="el leg" data-s="38.1" data-e="44" data-a="left" style="top:485px"><span class="s">=</span><span>links an attribute to its value</span></div>
+<div class="el leg" data-s="38.8" data-e="44" data-a="left" style="top:560px"><span class="s">{ }</span><span>groups attributes that belong together</span></div>
+<div class="el leg" data-s="39.5" data-e="44" data-a="left" style="top:635px"><span class="s">,</span><span>separates pairs in a group</span></div>
+<div class="el leg" data-s="40.2" data-e="44" data-a="left" style="top:710px"><span class="s">|&nbsp;|</span><span>human-readable term — the <b>ID</b> carries the meaning</span></div>
+
+<!-- S6 second example 44-52 -->
+<div class="el kicker" data-s="44.3" data-e="52" data-a="up" style="top:310px">Another example</div>
+<div class="el h2" data-s="44.5" data-e="52" data-a="up" style="top:345px">“<span style="color:var(--acc)">Acute</span> bacterial pneumonia”</div>
+<div class="el code" data-s="46" data-e="52" data-a="type" data-dur="3.5" style="top:470px"><span class="id">53084003</span> <span class="t">|Bacterial pneumonia|</span> <span class="op">:</span><br>&nbsp;&nbsp;<span class="id">263502005</span> <span class="at">|Clinical course|</span> <span class="op">=</span><br>&nbsp;&nbsp;<span class="id">424124008</span> <span class="v">|Sudden onset AND/OR short duration|</span></div>
+<div class="el p" data-s="49.8" data-e="52" data-a="up" style="top:630px">One expression. Precise meaning. <b>Computable.</b></div>
+
+<!-- S7 use cases 52-61 -->
+<div class="el kicker" data-s="52.3" data-e="61" data-a="up" style="top:260px">Why use it?</div>
+<div class="el h2" data-s="52.5" data-e="61" data-a="up" style="top:295px">Four use cases</div>
+<div class="el card" data-s="53.5" data-e="61" data-a="left" style="top:380px"><span class="num">1</span><b>Capture new meanings</b><small>not (yet) in any SNOMED CT release</small></div>
+<div class="el card" data-s="54.5" data-e="61" data-a="left" style="top:490px"><span class="num">2</span><b>Interoperability</b><small>exchange meaning between systems, incl. HL7 FHIR</small></div>
+<div class="el card" data-s="55.5" data-e="61" data-a="left" style="top:600px"><span class="num">3</span><b>Mapping</b><small>other code systems &amp; interface terms</small></div>
+<div class="el card" data-s="56.5" data-e="61" data-a="left" style="top:710px"><span class="num">4</span><b>Natural language processing</b><small>free text → structured, detailed expressions</small></div>
+
+<!-- S8 what it takes 61-70 -->
+<div class="el kicker" data-s="61.3" data-e="70" data-a="up" style="top:260px">What it takes</div>
+<div class="el h2" data-s="61.5" data-e="70" data-a="up" style="top:295px">Powerful — but plan carefully</div>
+<div class="el p" data-s="62.5" data-e="70" data-a="up" style="top:400px">✔ Careful implementation<br>✔ Skilled staff<br>✔ Specialised tools</div>
+<div class="el card" data-s="64" data-e="70" data-a="left" style="top:560px">A <b>terminology server</b> stores concepts <i>and</i> expressions — each linked to a SNOMED CT <b>edition</b>.</div>
+<div class="el card" data-s="65.5" data-e="70" data-a="left" style="top:690px"><span class="tag" style="background:var(--grn);color:var(--bg)">TIP</span> Start at support <b>Level 0</b> (fully valid expressions only) or <b>Level 1</b> to protect data quality.</div>
+
+<!-- S9 outro 70-76 -->
+<div class="el kicker" data-s="70.3" data-e="77" data-a="up" style="top:360px">In one line</div>
+<div class="el h2" data-s="70.6" data-e="77" data-a="scale" style="top:400px">Postcoordination = <span style="color:var(--acc)">concepts</span> + <span style="color:var(--teal)">rules</span> → <span style="color:var(--grn)">richer meaning</span>.</div>
+<div class="el p" data-s="72" data-e="77" data-a="up" style="top:580px;font-size:18px">Learn more: SNOMED CT Postcoordination Guide<br><b>docs.snomed.org</b></div>
+
+<div id="foot">SNOMED CT Postcoordination Guide</div>
+<div id="bar"></div>
+<script>
+const TOTAL=76;
+const els=[...document.querySelectorAll('.el')];
+// prepare typewriter: split text nodes into char spans
+els.filter(e=>e.dataset.a==='type').forEach(e=>{
+  const w=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  nodes.forEach(n=>{const f=document.createDocumentFragment();for(const c of n.textContent){const s=document.createElement('span');s.textContent=c;s.className='ch';s.style.opacity=0;f.appendChild(s)}n.replaceWith(f)});
+  e._chars=[...e.querySelectorAll('.ch')];
+});
+const ease=x=>1-Math.pow(1-Math.min(Math.max(x,0),1),3);
+window.render=t=>{
+  for(const e of els){
+    const s=+e.dataset.s,en=+e.dataset.e,a=e.dataset.a;
+    const pin=ease((t-s)/0.7), pout=ease((t-(en-0.5))/0.5);
+    let op=pin*(1-pout), tr='';
+    if(a==='up'||a==='type')tr=`translateY(${(1-pin)*30-pout*20}px)`;
+    if(a==='left')tr=`translateX(${(1-pin)*-60+pout*40}px)`;
+    if(a==='scale')tr=`scale(${0.85+0.15*pin})`;
+    if(a==='type'){op=Math.min(1,(t-s)/0.3)*(1-pout);op=Math.max(op,0);
+      const d=+(e.dataset.dur||1.6),n=e._chars.length,k=Math.floor(n*Math.min(1,Math.max(0,(t-s-0.2)/d)));
+      e._chars.forEach((c,i)=>c.style.opacity=i<k?1:0);}
+    e.style.opacity=op;e.style.transform=tr;
+  }
+  b1.style.transform=`translate(${-60+Math.sin(t/5)*120}px,${80+Math.cos(t/7)*140}px)`;
+  b2.style.transform=`translate(${260+Math.cos(t/6)*100}px,${620+Math.sin(t/4)*120}px)`;
+  bar.style.width=(t/TOTAL*100)+'%';
+};
+window.TOTAL=TOTAL;render(0);
+</script></body></html>
