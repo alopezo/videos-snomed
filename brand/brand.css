@@ -1,0 +1,21 @@
+/* SNOMED International brand palette (Brand Guidelines 2025).
+   Shared by every video: link it from index.base.html as ../../brand/brand.css
+   and map these tokens onto the video's own semantic variables. */
+:root{
+  /* Primary */
+  --brand-navy:#003865;      /* Pantone 2955 C */
+  --brand-blue:#00A9E0;      /* Pantone 2995 C — RGB 0 169 224 */
+  /* Accent */
+  --brand-yellow:#FFC600;    /* Pantone 7548 C */
+  /* Secondary */
+  --brand-cobalt:#0067B9;    /* Pantone 2144 C */
+  --brand-black:#101820;     /* Pantone Black 6 C */
+  --brand-purple:#654EA3;    /* Pantone 2096 C — education */
+  --brand-green:#009B77;     /* Pantone 3278 C — research */
+  --brand-turquoise:#0097A9; /* Pantone 7711 C — tooling */
+  --brand-grey:#CFCDC9;      /* Pantone 2330 C */
+  --brand-red:#722257;       /* Pantone 7650 C — adoption */
+}
+
+/* Discreet logo slot: bottom-right, aligned with the footer line. */
+.brand-logo{position:absolute;right:36px;bottom:19px;height:15px;opacity:.85}

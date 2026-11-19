@@ -23,6 +23,9 @@ tts.py              narration.md → audio/scene_N.wav (Kokoro), shared pronunci
 retime.py           stretches scenes to fit the narration → index.html + build/timings.json
 render.js           index.html → silent MP4 (Playwright + ffmpeg), or single PNG frames
 mix.py              voice + ducked music → final MP4, normalised to −16 LUFS
+brand/
+  brand.css         SNOMED International palette as CSS tokens (--brand-navy, --brand-blue, …)
+  logos/            official SVG logos (SNOMED CT, SNOMED International, combined marks)
 music/              shared local music library (gitignored)
 videos/<name>/
   video.json        title, voice, speed, music track, output file name
@@ -33,6 +36,21 @@ videos/<name>/
 ```
 
 The shared scripts take the video folder as an argument. Everything that differs between videos lives in `videos/<name>/`.
+
+## Branding
+
+Videos use the SNOMED International palette (Brand Guidelines 2025) from `brand/brand.css`:
+
+| Token | Hex | Role |
+|-------|-----|------|
+| `--brand-navy` | `#003865` | Primary: backgrounds |
+| `--brand-blue` | `#00A9E0` | Primary: highlights, kickers, operators |
+| `--brand-yellow` | `#FFC600` | Accent: concept IDs, emphasis |
+| `--brand-cobalt` `--brand-black` `--brand-purple` `--brand-green` `--brand-turquoise` `--brand-grey` `--brand-red` | see file | Secondary |
+
+Each `index.base.html` links `../../brand/brand.css` and maps these tokens onto its own semantic variables (`--bg`, `--acc`, `--hi`, `--op`, …). Don't hard-code hex values in a video.
+Use a logo discreetly through the `.brand-logo` class (bottom-right, next to the footer).
+The logos are trademarks of SNOMED International. Use them only as the brand guidelines allow.
 
 ## Requirements
 

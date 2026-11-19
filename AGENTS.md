@@ -18,6 +18,7 @@ A code-only pipeline that turns a video folder into a narrated vertical video (1
 | `PRONUNCIATION` fixes in `tts.py` | `narration.md`: one row per scene |
 | Timing and mix settings in `retime.py` / `mix.py` | `index.base.html`: the scenes (the source of truth) |
 | `music/` library (gitignored) | `index.html`: generated, but committed |
+| `brand/brand.css` palette, `brand/logos/*.svg` | Semantic colour variables mapped to brand tokens |
 | README, AGENTS.md, LICENSE | `audio/`, `build/`, output MP4: generated, gitignored |
 
 When something becomes useful to more than one video, such as a style, a helper or a pronunciation fix, move it to the shared layer. Don't copy it into each folder.
@@ -25,12 +26,19 @@ When something becomes useful to more than one video, such as a style, a helper 
 ## Creating a new video ("make a video about X")
 
 1. `mkdir videos/<kebab-name>`. Copy `video.json`, `narration.md` and `index.base.html` from an existing video as a starting point.
-2. Write the scenes in `index.base.html`, with one comment `<!-- S<n> <label> <start>-<end> -->` per scene, in order. Keep the shared look: the CSS variables, 540×960 canvas and footer.
+2. Write the scenes in `index.base.html`, with one comment `<!-- S<n> <label> <start>-<end> -->` per scene, in order. Keep the shared look: the brand colour tokens, the 540×960 canvas, the footer and the discreet logo.
 3. Write `narration.md` with the same scene numbers and times. Budget about 2 spoken words per second.
 4. Set `video.json`. `music` is a path relative to the repo root (`music/<file>.mp3`), and `output` is the file name inside the video folder.
 5. Ask the user before downloading a music track. Credit it in the README's music table.
 6. Run `./build.sh <name>`. Check frames with `node render.js videos/<name> x 3,20,42`.
 7. Add the video to the README's "Videos" table.
+
+## Branding
+
+- Colours come only from `brand/brand.css`, the SNOMED International palette. In each video, link `../../brand/brand.css` and set the `:root` semantic variables (`--bg`, `--bg2`, `--ink`, `--mute`, `--acc`, `--hi`, `--op`, `--at`, `--ok`, `--code`) to `var(--brand-…)` tokens. Never hard-code hex values in a video.
+- Default mapping: navy background, brand blue for highlights and operators, yellow accent for concept IDs and emphasis, turquoise for attributes and green for values. Code blocks sit on brand black, so the syntax colours keep their contrast.
+- Keep the logo discreet. Use `<img class="brand-logo" src="../../brand/logos/SNOMED_CT.svg">` next to the footer, and don't enlarge it or move it into the content.
+- Fonts are not branded yet (the videos use Inter / JetBrains Mono). The brand font is Mulish. Only switch to it if the user asks.
 
 ## Pipeline (what `build.sh` runs)
 
