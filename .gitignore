@@ -1,13 +1,20 @@
-# Media (generated or third-party) — never committed
+# Media is never committed: only the logic lives in git.
+# Patterns apply at any depth, so they cover every videos/<name>/ folder.
+
+# Rendered / generated / third-party media
 *.mp4
 *.mp3
 *.wav
 *.m4a
 *.png
 *.jpg
+
+# Per-video generated folders (videos/<name>/audio, videos/<name>/build)
 audio/
-music/
 build/
+
+# Shared music library at the repo root (download tracks locally; see README)
+/music/
 
 # Environments
 node_modules/

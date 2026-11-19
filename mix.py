@@ -1,16 +1,21 @@
 """Mix narration + ducked background music onto the silent render.
 
-Usage: .venv/bin/python mix.py [music.mp3] [output.mp4]
-Needs build/video-silent.mp4 (render.js) and build/timings.json (retime.py).
+Usage: .venv/bin/python mix.py videos/<name> [music.mp3] [output.mp4]
+Music and output default to "music" (relative to the repo root) and "output" (inside the video folder) in video.json.
+Needs <video>/build/video-silent.mp4 (render.js) and <video>/build/timings.json (retime.py).
 """
 import json
 import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).parent
-MUSIC = sys.argv[1] if len(sys.argv) > 1 else str(ROOT / "music" / "kulakovka-corporate-background.mp3")
-OUT = sys.argv[2] if len(sys.argv) > 2 else str(ROOT / "postcoordination-explainer-narrated.mp4")
+if len(sys.argv) < 2:
+    sys.exit(__doc__)
+REPO = Path(__file__).parent
+ROOT = Path(sys.argv[1])  # the video folder
+cfg = json.loads((ROOT / "video.json").read_text())
+MUSIC = sys.argv[2] if len(sys.argv) > 2 else str(REPO / cfg["music"])
+OUT = sys.argv[3] if len(sys.argv) > 3 else str(ROOT / cfg.get("output", "video.mp4"))
 MUSIC_VOL = 0.08  # music level before ducking (~9 dB under the voice; ducking adds more while speaking)
 FADE_OUT = 3.0
 SILENCE_IN = 0.4   # seconds of pure silence before the music fades in

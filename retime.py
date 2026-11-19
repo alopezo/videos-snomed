@@ -1,15 +1,19 @@
-"""Stretch scenes in index.base.html so each fits its narration clip; write index.html + build/timings.json.
+"""Stretch scenes in <video>/index.base.html so each fits its narration clip.
 
-Usage: .venv/bin/python retime.py
-Run tts.py first so audio/scene_N.wav exists.
+Usage: .venv/bin/python retime.py videos/<name>
+Run tts.py first so <video>/audio/scene_N.wav exists.
+Writes <video>/index.html and <video>/build/timings.json.
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 import soundfile as sf
 
-ROOT = Path(__file__).parent
+if len(sys.argv) < 2:
+    sys.exit(__doc__)
+ROOT = Path(sys.argv[1])  # the video folder
 LEAD = 0.5   # seconds from scene start to narration start
 FIRST_LEAD = 1.2  # a little longer before the very first line, so the voice doesn't start instantly
 TAIL = 1.0   # seconds after narration ends before the next scene (includes 0.5s fade-out)

@@ -1,8 +1,10 @@
-"""Generate one narration clip per scene from narration.md using Kokoro.
+"""Generate one narration clip per scene from <video>/narration.md using Kokoro.
 
-Usage: .venv/bin/python tts.py [voice] [speed]
-Writes audio/scene_N.wav and prints each clip's length against its scene window.
+Usage: .venv/bin/python tts.py videos/<name> [voice] [speed]
+Voice and speed default to the values in <video>/video.json.
+Writes <video>/audio/scene_N.wav and prints each clip's length against its scene window.
 """
+import json
 import re
 import sys
 from pathlib import Path
@@ -11,12 +13,10 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
-ROOT = Path(__file__).parent
-VOICE = sys.argv[1] if len(sys.argv) > 1 else "af_heart"
-SPEED = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
 SR = 24000
 
 # Spoken-only respellings so the voice pronounces terms correctly; narration.md keeps the real spelling.
+# Shared by every video: add terms here once.
 PRONUNCIATION = [
     # Explicit phonemes (Kokoro's [word](/ipa/) syntax): "snow-med" with a clear "e", not "snowmd".
     ("docs.snomed.org", "docs dot [Snowmed](/snˈOmˌɛd/) dot org"),
@@ -30,21 +30,34 @@ def speakable(text):
         text = re.sub(re.escape(written), spoken, text, flags=re.IGNORECASE)
     return text
 
-rows = []
-for line in (ROOT / "narration.md").read_text().splitlines():
-    m = re.match(r"\|\s*(\d+)\s*\|\s*([\d.]+)[–-]([\d.]+)\s*\|[^|]*\|\s*(.+?)\s*\|$", line)
-    if m:
-        rows.append((int(m[1]), float(m[2]), float(m[3]), m[4]))
 
-out = ROOT / "audio"
-out.mkdir(exist_ok=True)
-pipe = KPipeline(lang_code="a", repo_id="hexgrad/Kokoro-82M")
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    video = Path(sys.argv[1])
+    cfg = json.loads((video / "video.json").read_text())
+    voice = sys.argv[2] if len(sys.argv) > 2 else cfg.get("voice", "af_heart")
+    speed = float(sys.argv[3]) if len(sys.argv) > 3 else float(cfg.get("speed", 1.0))
 
-for n, start, end, text in rows:
-    chunks = [audio for _, _, audio in pipe(speakable(text), voice=VOICE, speed=SPEED)]
-    wav = np.concatenate(chunks)
-    sf.write(out / f"scene_{n}.wav", wav, SR)
-    dur = len(wav) / SR
-    window = end - start - 0.4
-    flag = "OK" if dur <= window else f"OVER by {dur - window:.1f}s"
-    print(f"scene {n}: {dur:5.1f}s / window {window:4.1f}s  {flag}")
+    rows = []
+    for line in (video / "narration.md").read_text().splitlines():
+        m = re.match(r"\|\s*(\d+)\s*\|\s*([\d.]+)[–-]([\d.]+)\s*\|[^|]*\|\s*(.+?)\s*\|$", line)
+        if m:
+            rows.append((int(m[1]), float(m[2]), float(m[3]), m[4]))
+
+    out = video / "audio"
+    out.mkdir(exist_ok=True)
+    pipe = KPipeline(lang_code="a", repo_id="hexgrad/Kokoro-82M")
+
+    for n, start, end, text in rows:
+        chunks = [audio for _, _, audio in pipe(speakable(text), voice=voice, speed=speed)]
+        wav = np.concatenate(chunks)
+        sf.write(out / f"scene_{n}.wav", wav, SR)
+        dur = len(wav) / SR
+        window = end - start - 0.4
+        flag = "OK" if dur <= window else f"OVER by {dur - window:.1f}s"
+        print(f"scene {n}: {dur:5.1f}s / window {window:4.1f}s  {flag}")
+
+
+if __name__ == "__main__":
+    main()
