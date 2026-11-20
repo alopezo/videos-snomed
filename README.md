@@ -67,7 +67,9 @@ The first run of `tts.py` downloads the Kokoro model (~350 MB) from Hugging Face
 
 ## Music
 
-Music is not included. Download the track each video names in its `video.json` and save it under `music/`.
+Music files are not committed, because the track licenses forbid redistributing them as standalone files.
+Each `video.json` names its track (`music`), the direct download URL (`music_url`) and the credit (`music_credit`).
+`./build.sh` downloads the track into `music/` automatically if it isn't there yet.
 
 | Video | Track | License |
 |-------|-------|---------|

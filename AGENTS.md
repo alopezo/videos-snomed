@@ -14,7 +14,7 @@ A code-only pipeline that turns a video folder into a narrated vertical video (1
 
 | Shared (repo root) | Per video (`videos/<name>/`) |
 |--------------------|------------------------------|
-| Pipeline scripts, `build.sh` | `video.json`: title, voice, speed, music, output |
+| Pipeline scripts, `build.sh` | `video.json`: title, voice, speed, music, music_url, music_credit, output |
 | `PRONUNCIATION` fixes in `tts.py` | `narration.md`: one row per scene |
 | Timing and mix settings in `retime.py` / `mix.py` | `index.base.html`: the scenes (the source of truth) |
 | `music/` library (gitignored) | `index.html`: generated, but committed |
@@ -28,8 +28,8 @@ When something becomes useful to more than one video, such as a style, a helper 
 1. `mkdir videos/<kebab-name>`. Copy `video.json`, `narration.md` and `index.base.html` from an existing video as a starting point.
 2. Write the scenes in `index.base.html`, with one comment `<!-- S<n> <label> <start>-<end> -->` per scene, in order. Keep the shared look: the brand colour tokens, the 540×960 canvas, the footer and the discreet logo.
 3. Write `narration.md` with the same scene numbers and times. Budget about 2 spoken words per second.
-4. Set `video.json`. `music` is a path relative to the repo root (`music/<file>.mp3`), and `output` is the file name inside the video folder.
-5. Ask the user before downloading a music track. Credit it in the README's music table.
+4. Set `video.json`. `music` is a path relative to the repo root (`music/<file>.mp3`). `music_url` is the track's direct download URL, which `build.sh` fetches when the file is missing. `music_credit` holds the credit line, and `output` is the file name inside the video folder.
+5. Ask the user before choosing or downloading a new music track. Credit it in `music_credit` and in the README's music table. Never commit the audio file: licenses such as Pixabay's forbid redistributing it on a standalone basis.
 6. Run `./build.sh <name>`. Check frames with `node render.js videos/<name> x 3,20,42`.
 7. Add the video to the README's "Videos" table.
 
