@@ -14,6 +14,7 @@ The repository holds only the logic. Rendered videos, generated audio and music 
 | Folder | Topic | Length |
 |--------|-------|--------|
 | [`videos/postcoordination`](videos/postcoordination) | Precoordinated vs postcoordinated expressions, compositional grammar, use cases | ~98 s |
+| [`videos/drug-model`](videos/drug-model) | The two-layer drug model: International Drug Model + National Drug Extensions (MP → MPF → CD → RCD → RPCD / CDP) | ~102 s |
 
 ## Layout
 
@@ -70,7 +71,7 @@ Music is not included. Download the track each video names in its `video.json` a
 
 | Video | Track | License |
 |-------|-------|---------|
-| postcoordination | [“Corporate Background” by Kulakovka](https://pixabay.com/music/corporate-corporate-background-609167/) → `music/kulakovka-corporate-background.mp3` | [Pixabay Content License](https://pixabay.com/service/license-summary/) |
+| postcoordination, drug-model | [“Corporate Background” by Kulakovka](https://pixabay.com/music/corporate-corporate-background-609167/) → `music/kulakovka-corporate-background.mp3` | [Pixabay Content License](https://pixabay.com/service/license-summary/) |
 
 ## Build
 
