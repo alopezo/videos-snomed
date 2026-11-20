@@ -51,7 +51,7 @@ When something becomes useful to more than one video, such as a style, a helper 
 
 - **Edit `index.base.html`, not `index.html`.** `retime.py` regenerates `index.html`.
 - `narration.md` rows must keep the shape `| n | start–end | budget | text |`, because `tts.py` parses them with a regex. The scene count must match `index.base.html`.
-- Write SNOMED CT terms in their real spelling in `narration.md`. Spoken-only fixes go in `PRONUNCIATION` in `tts.py`, using Kokoro's `[word](/ipa/)` syntax. Current fixes: SNOMED → /snˈOmˌɛd/ ("snow-med", with a clear *e*), FHIR → "Fire".
+- Write SNOMED CT terms in their real spelling in `narration.md`. Spoken-only fixes go in `PRONUNCIATION` in `tts.py`, using Kokoro's `[word](/ipa/)` syntax. Current fixes: SNOMED → /snˈOmˌɛd/ ("snow-med", with a clear *e*), FHIR → "Fire", PES → "P E S". Replacements match whole words only, so short acronyms stay safe inside longer words.
 - To check a pronunciation without listening, print the phonemes with `KPipeline(lang_code="a").g2p(text)[0]`.
 - Don't hard-code timings in a video folder. The knobs live at the top of `retime.py` and `mix.py`.
 - Verify audio by measuring, not by guessing. Use `ffmpeg -af ebur128` for integrated loudness (target −16 LUFS), and `volumedetect` on short segments for silences and ducking. Music should sit about 8 dB under the voice when no one is speaking.

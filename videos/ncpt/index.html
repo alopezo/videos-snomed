@@ -1,0 +1,150 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="../../brand/brand.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:var(--brand-navy);--bg2:color-mix(in srgb,var(--brand-cobalt) 55%,var(--brand-navy));--ink:#fff;--mute:var(--brand-grey);--acc:var(--brand-yellow);--hi:var(--brand-blue);--op:var(--brand-blue);--ok:var(--brand-green);--at:var(--brand-turquoise);--code:var(--brand-black)}
+*{box-sizing:border-box;margin:0}
+html,body{width:540px;height:960px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--ink)}
+#bg{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,var(--bg2),var(--bg) 70%)}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.22}
+.el{position:absolute;left:36px;right:36px;opacity:0;will-change:transform,opacity}
+.kicker{font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--hi)}
+.h1{font-size:58px;font-weight:800;line-height:1.02}
+.h2{font-size:38px;font-weight:800;line-height:1.1}
+.p{font-size:23px;line-height:1.4;color:var(--mute)}
+.p b{color:var(--ink)}
+.code{font-family:'JetBrains Mono',monospace;font-size:17.5px;line-height:1.6;background:color-mix(in srgb,var(--code) 85%,transparent);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px}
+.id{color:var(--acc)} .t{color:var(--mute)} .op{color:var(--op);font-weight:700} .at{color:var(--at)} .v{color:var(--ok)}
+.card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 18px;font-size:21px;line-height:1.35}
+.card small{display:block;color:var(--mute);font-size:16px;margin-top:4px}
+.num{display:inline-block;width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--bg);font-weight:800;text-align:center;line-height:34px;margin-right:10px;font-size:18px}
+.tag{display:inline-block;padding:5px 12px;border-radius:999px;font-size:15px;font-weight:700;margin-right:6px}
+.big{font-size:92px;font-weight:800;line-height:1}
+.leg{display:flex;align-items:center;gap:16px;font-size:20px}
+.leg .s{flex:none;white-space:nowrap;font-family:'JetBrains Mono';font-size:34px;font-weight:700;color:var(--op);width:74px;text-align:center;background:color-mix(in srgb,var(--code) 70%,transparent);border-radius:10px;padding:4px 0}
+#bar{position:absolute;left:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--hi),var(--acc))}
+#foot{position:absolute;left:36px;bottom:20px;font-size:13px;color:var(--mute);letter-spacing:.05em}
+.lvl{display:inline-block;min-width:66px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;padding:4px 8px;border-radius:8px;margin-right:12px;color:var(--bg)}
+.lvl.intl{background:var(--hi)} .lvl.ext{background:var(--acc)}
+.code-id{display:block;font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--acc);margin-top:6px}
+.layer{border-radius:16px;padding:16px 18px;font-size:21px;line-height:1.35;border:1px solid rgba(255,255,255,.14)}
+.layer.intl{background:color-mix(in srgb,var(--brand-blue) 22%,transparent);border-color:color-mix(in srgb,var(--brand-blue) 60%,transparent)}
+.layer.ext{background:color-mix(in srgb,var(--brand-yellow) 14%,transparent);border-color:color-mix(in srgb,var(--brand-yellow) 55%,transparent)}
+.layer small{display:block;color:var(--mute);font-size:16px;margin-top:4px}
+.chain{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;line-height:1.7}
+.chain .i{color:var(--hi)} .chain .x{color:var(--acc)} .chain .a{color:var(--mute);font-weight:500}
+.val{color:var(--ok);font-weight:700;margin-left:8px}
+.sem{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-left:8px;vertical-align:middle}
+.pes{display:inline-block;width:38px;height:38px;border-radius:10px;background:var(--acc);color:var(--bg);font-weight:800;font-size:22px;text-align:center;line-height:38px;margin-right:12px;vertical-align:middle}
+.link{font-size:17px;font-style:italic;color:var(--hi);font-weight:600}
+.flow{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700}
+.flow .box{flex:1;text-align:center;padding:14px 8px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+.flow .arrow{color:var(--hi);font-size:15px;text-align:center;line-height:1.2}
+</style></head><body>
+<div id="bg"><div class="blob" id="b1" style="width:360px;height:360px;background:var(--brand-cobalt)"></div><div class="blob" id="b2" style="width:300px;height:300px;background:var(--brand-blue)"></div></div>
+
+<!-- S1 title 0-6 -->
+<div class="el kicker" data-s="0.37" data-e="7.4" data-a="up" style="top:340px">SNOMED CT · NCPT</div>
+<div class="el h1" data-s="0.74" data-e="7.4" data-a="up" style="top:375px">Nutrition care, coded</div>
+<div class="el p" data-s="1.73" data-e="7.4" data-a="up" style="top:520px">The <b>Nutrition Care Process Terminology</b> in SNOMED CT — consistent, interoperable nutrition and dietetics care.</div>
+
+<!-- S2 nutrition care process 6-15 -->
+<div class="el kicker" data-s="7.86" data-e="21.15" data-a="up" style="top:230px">The Nutrition Care Process</div>
+<div class="el h2" data-s="8.16" data-e="21.15" data-a="up" style="top:265px">Four steps, one standard language</div>
+<div class="el card" data-s="9.69" data-e="21.15" data-a="left" style="top:400px"><span class="num">1</span><b>Nutrition Assessment</b></div>
+<div class="el card" data-s="10.61" data-e="21.15" data-a="left" style="top:475px"><span class="num">2</span><b>Nutrition Diagnosis</b></div>
+<div class="el card" data-s="11.52" data-e="21.15" data-a="left" style="top:550px"><span class="num">3</span><b>Nutrition Intervention</b></div>
+<div class="el card" data-s="12.44" data-e="21.15" data-a="left" style="top:625px"><span class="num">4</span><b>Nutrition Monitoring and Evaluation</b></div>
+<div class="el p" data-s="14.28" data-e="21.15" data-a="up" style="top:725px;font-size:17px">NCP Model and NCPT: developed through global collaboration, led by the <b>Academy of Nutrition and Dietetics</b>.</div>
+
+<!-- S3 reference set 15-24 -->
+<div class="el kicker" data-s="21.59" data-e="34.27" data-a="up" style="top:230px">SNOMED CT NCPT Reference Set</div>
+<div class="el h2" data-s="21.88" data-e="34.27" data-a="up" style="top:265px">NCPT terms, inside the EHR</div>
+<div class="el layer intl" data-s="23.77" data-e="34.27" data-a="left" style="top:400px"><b>Nutrition diagnoses</b><small>the “problems” — findings</small></div>
+<div class="el layer ext" data-s="24.94" data-e="34.27" data-a="left" style="top:500px"><b>Interventions</b><small>planned actions — procedures</small></div>
+<div class="el layer" data-s="26.11" data-e="34.27" data-a="left" style="top:600px;background:rgba(255,255,255,.07)"><b>Assessment, monitoring and evaluation</b><small>observed and measured data — observable entities</small></div>
+
+<!-- S4 nutrition assessment 24-37 -->
+<div class="el kicker" data-s="34.63" data-e="49.52" data-a="up" style="top:200px">Step 1 · Nutrition Assessment</div>
+<div class="el h2" data-s="34.86" data-e="49.52" data-a="up" style="top:235px">Newly diagnosed type 2 diabetes</div>
+<div class="el p" data-s="36.03" data-e="49.52" data-a="up" style="top:335px;font-size:19px">Referred to a dietitian for the first time.</div>
+<div class="el card" data-s="38.38" data-e="49.52" data-a="left" style="top:395px"><b>Carbohydrate intake</b><span class="val">&gt; 500 g/day</span><span class="code-id">788472008 <span class="t">· recommended 250–300 g/day</span></span></div>
+<div class="el card" data-s="41.31" data-e="49.52" data-a="left" style="top:505px"><b>Nutrition knowledge of individual client</b><span class="val">poor</span><span class="code-id">785891000</span></div>
+<div class="el card" data-s="43.07" data-e="49.52" data-a="left" style="top:645px"><b>Healthy Eating Index 2015 score</b><span class="val">49 / 100</span><span class="code-id">819960006</span></div>
+<div class="el p" data-s="44.83" data-e="49.52" data-a="up" style="top:775px;font-size:17px">All recorded as SNOMED CT <b>observable entities</b> with their values.</div>
+
+<!-- S5 nutrition diagnosis 37-49 -->
+<div class="el kicker" data-s="49.84" data-e="62.27" data-a="up" style="top:200px">Step 2 · Nutrition Diagnosis</div>
+<div class="el h2" data-s="50.06" data-e="62.27" data-a="up" style="top:235px">A PES statement</div>
+<div class="el card" data-s="51.65" data-e="62.27" data-a="left" style="top:320px"><span class="pes">P</span><b>Excessive intake of carbohydrate</b><span class="code-id">870404000 <span class="t">· problem · finding</span></span></div>
+<div class="el link" data-s="53.24" data-e="62.27" data-a="up" style="top:432px">related to</div>
+<div class="el card" data-s="54.31" data-e="62.27" data-a="left" style="top:465px"><span class="pes">E</span><b>Unbalanced diet</b><span class="code-id">424890008 <span class="t">· etiology · finding</span></span></div>
+<div class="el link" data-s="55.9" data-e="62.27" data-a="up" style="top:577px">as evidenced by</div>
+<div class="el card" data-s="56.96" data-e="62.27" data-a="left" style="top:610px"><span class="pes">S</span><b>Signs and symptoms</b><small>carbohydrate intake &gt; 500 g/day · poor nutrition knowledge · HEI-2015 49/100</small></div>
+
+<!-- S6 nutrition intervention 49-59 -->
+<div class="el kicker" data-s="62.75" data-e="78.28" data-a="up" style="top:220px">Step 3 · Nutrition Intervention</div>
+<div class="el h2" data-s="63.07" data-e="78.28" data-a="up" style="top:255px">Education — and what it covers</div>
+<div class="el card" data-s="65.47" data-e="78.28" data-a="left" style="top:390px"><span class="tag" style="background:var(--acc);color:var(--bg)">INTERVENTION · PROCEDURE</span><div style="margin-top:10px"><b>Content-related nutrition education</b></div><span class="code-id">445301000124102</span></div>
+<div class="el link" data-s="68.67" data-e="78.28" data-a="up" style="top:532px">on</div>
+<div class="el card" data-s="69.64" data-e="78.28" data-a="left" style="top:565px"><span class="tag" style="background:var(--hi);color:var(--bg)">WHAT IT COVERS · OBSERVABLE</span><div style="margin-top:10px"><b>Estimated quantity of intake of carbohydrate in 24 hours</b></div><span class="code-id">787764007</span></div>
+<div class="el p" data-s="72.68" data-e="78.28" data-a="up" style="top:745px;font-size:19px">Both are recorded in the EHR — supporting <b>carbohydrate control and portion sizes</b>.</div>
+
+<!-- S7 monitoring and evaluation 59-68 -->
+<div class="el kicker" data-s="78.61" data-e="88.38" data-a="up" style="top:220px">Step 4 · Monitoring and Evaluation</div>
+<div class="el h2" data-s="78.84" data-e="88.38" data-a="up" style="top:255px">Same codes, tracked over time</div>
+<div class="el card" data-s="80.52" data-e="88.38" data-a="left" style="top:395px">↻ <b>Carbohydrate intake</b><span class="code-id">788472008</span></div>
+<div class="el card" data-s="81.19" data-e="88.38" data-a="left" style="top:490px">↻ <b>Nutrition knowledge of individual client</b><span class="code-id">785891000</span></div>
+<div class="el card" data-s="81.87" data-e="88.38" data-a="left" style="top:585px">↻ <b>Healthy Eating Index 2015 score</b><span class="code-id">819960006</span></div>
+<div class="el p" data-s="83.33" data-e="88.38" data-a="up" style="top:700px">Progress measured against the diagnosis — <b>not retyped</b>.</div>
+
+<!-- S8 team and transitions 68-79 -->
+<div class="el kicker" data-s="88.73" data-e="101.58" data-a="up" style="top:230px">Across the team and settings</div>
+<div class="el h2" data-s="88.97" data-e="101.58" data-a="up" style="top:265px">Data that follows the patient</div>
+<div class="el card" data-s="90.78" data-e="101.58" data-a="left" style="top:400px">The whole team reads the same coded data<small>endocrinologist · primary care · nurses</small></div>
+<div class="el flow" data-s="94.38" data-e="101.58" data-a="up" style="top:540px"><div class="box">Hospital</div><div class="arrow">HL7 FHIR<br>→</div><div class="box">Community care</div></div>
+<div class="el p" data-s="96.17" data-e="101.58" data-a="up" style="top:660px">Continuity across <b>transitions of care</b>.</div>
+
+<!-- S9 decision support and research 79-88 -->
+<div class="el kicker" data-s="101.92" data-e="112.05" data-a="up" style="top:250px">Beyond documentation</div>
+<div class="el h2" data-s="102.16" data-e="112.05" data-a="up" style="top:285px">Decision support and research</div>
+<div class="el card" data-s="103.9" data-e="112.05" data-a="left" style="top:420px"><b>Clinical decision support</b><small>e.g. tailored recommendations in chronic kidney disease</small></div>
+<div class="el card" data-s="105.65" data-e="112.05" data-a="left" style="top:530px"><b>Research and quality improvement</b><small>aggregated SNOMED CT-coded nutrition care data</small></div>
+
+<!-- S10 outro 88-94 -->
+<div class="el kicker" data-s="112.67" data-e="125.5" data-a="up" style="top:350px">In one line</div>
+<div class="el h2" data-s="113.29" data-e="125.5" data-a="scale" style="top:390px"><span style="color:var(--hi)">Standard terms</span> → <span style="color:var(--acc)">better nutrition care</span>.</div>
+<div class="el p" data-s="116.2" data-e="125.5" data-a="up" style="top:540px;font-size:18px">Learn more: SNOMED CT NCPT Implementation Guide<br><b>docs.snomed.org</b></div>
+
+<div id="foot">SNOMED CT NCPT Implementation Guide</div>
+<img class="brand-logo" src="../../brand/logos/SNOMED_CT.svg" alt="SNOMED CT">
+<div id="bar"></div>
+<script>
+const TOTAL=124.5;
+const els=[...document.querySelectorAll('.el')];
+// prepare typewriter: split text nodes into char spans
+els.filter(e=>e.dataset.a==='type').forEach(e=>{
+  const w=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+  nodes.forEach(n=>{const f=document.createDocumentFragment();for(const c of n.textContent){const s=document.createElement('span');s.textContent=c;s.className='ch';s.style.opacity=0;f.appendChild(s)}n.replaceWith(f)});
+  e._chars=[...e.querySelectorAll('.ch')];
+});
+const ease=x=>1-Math.pow(1-Math.min(Math.max(x,0),1),3);
+window.render=t=>{
+  for(const e of els){
+    const s=+e.dataset.s,en=+e.dataset.e,a=e.dataset.a;
+    const pin=ease((t-s)/0.7), pout=ease((t-(en-0.5))/0.5);
+    let op=pin*(1-pout), tr='';
+    if(a==='up'||a==='type')tr=`translateY(${(1-pin)*30-pout*20}px)`;
+    if(a==='left')tr=`translateX(${(1-pin)*-60+pout*40}px)`;
+    if(a==='scale')tr=`scale(${0.85+0.15*pin})`;
+    if(a==='type'){op=Math.min(1,(t-s)/0.3)*(1-pout);op=Math.max(op,0);
+      const d=+(e.dataset.dur||1.6),n=e._chars.length,k=Math.floor(n*Math.min(1,Math.max(0,(t-s-0.2)/d)));
+      e._chars.forEach((c,i)=>c.style.opacity=i<k?1:0);}
+    e.style.opacity=op;e.style.transform=tr;
+  }
+  b1.style.transform=`translate(${-60+Math.sin(t/5)*120}px,${80+Math.cos(t/7)*140}px)`;
+  b2.style.transform=`translate(${260+Math.cos(t/6)*100}px,${620+Math.sin(t/4)*120}px)`;
+  bar.style.width=(t/TOTAL*100)+'%';
+};
+window.TOTAL=TOTAL;render(0);
+</script></body></html>

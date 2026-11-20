@@ -15,6 +15,7 @@ The repository holds only the logic. Rendered videos, generated audio and music 
 |--------|-------|--------|
 | [`videos/postcoordination`](videos/postcoordination) | Precoordinated vs postcoordinated expressions, compositional grammar, use cases | ~98 s |
 | [`videos/drug-model`](videos/drug-model) | The two-layer drug model: International Drug Model + National Drug Extensions (MP → MPF → CD → RCD → RPCD / CDP) | ~102 s |
+| [`videos/ncpt`](videos/ncpt) | Clinical case through the Nutrition Care Process with the SNOMED CT NCPT Reference Set: assessment, PES diagnosis, intervention, monitoring and evaluation | ~125 s |
 
 ## Layout
 
@@ -73,7 +74,7 @@ Each `video.json` names its track (`music`), the direct download URL (`music_url
 
 | Video | Track | License |
 |-------|-------|---------|
-| postcoordination, drug-model | [“Corporate Background” by Kulakovka](https://pixabay.com/music/corporate-corporate-background-609167/) → `music/kulakovka-corporate-background.mp3` | [Pixabay Content License](https://pixabay.com/service/license-summary/) |
+| postcoordination, drug-model, ncpt | [“Corporate Background” by Kulakovka](https://pixabay.com/music/corporate-corporate-background-609167/) → `music/kulakovka-corporate-background.mp3` | [Pixabay Content License](https://pixabay.com/service/license-summary/) |
 
 ## Build
 
@@ -116,7 +117,7 @@ You can also open `videos/<name>/index.html` in Chrome and run `render(20)` in t
   - `data-a`: the animation (`up`, `left`, `scale`, `type`).
   - `data-dur`: typing time, for `type` only.
   - `style="top:…px"`: vertical position on a 540×960 canvas.
-- **Pronunciation:** the fixes are shared by all videos, in `PRONUNCIATION` in `tts.py`. Kokoro accepts explicit IPA as `[word](/ipa/)`. For example, SNOMED is read as *snow-med* and FHIR as *fire*.
+- **Pronunciation:** the fixes are shared by all videos, in `PRONUNCIATION` in `tts.py`. Kokoro accepts explicit IPA as `[word](/ipa/)`. For example, SNOMED is read as *snow-med*, FHIR as *fire* and PES letter by letter. Matches are whole words only.
 - **Voice and speed:** set them in `video.json`. Any Kokoro voice works, for example `af_heart`, `am_michael` or `bf_emma`.
 - **Pacing, silences and music level:** shared settings at the top of `retime.py` (`LEAD`, `FIRST_LEAD`, `TAIL`, `OUTRO`) and `mix.py` (`MUSIC_VOL`, `SILENCE_IN`, `SILENCE_OUT`).
 

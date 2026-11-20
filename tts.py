@@ -22,12 +22,14 @@ PRONUNCIATION = [
     ("docs.snomed.org", "docs dot [Snowmed](/snˈOmˌɛd/) dot org"),
     ("SNOMED", "[Snowmed](/snˈOmˌɛd/)"),
     ("FHIR", "Fire"),
+    ("PES", "P E S"),  # problem, etiology, signs and symptoms — spelled out, not "peez"
 ]
 
 
 def speakable(text):
     for written, spoken in PRONUNCIATION:
-        text = re.sub(re.escape(written), spoken, text, flags=re.IGNORECASE)
+        # Whole words only, so short acronyms like "PES" don't match inside "types".
+        text = re.sub(rf"\b{re.escape(written)}\b", spoken, text, flags=re.IGNORECASE)
     return text
 
 
